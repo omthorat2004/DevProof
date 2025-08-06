@@ -1,7 +1,7 @@
 import '../styles/login.css'
 const Login = () => {
   const handleLogin = () => {
-    window.location.href = 'http://localhost:3000/auth/github'
+    window.location.href = `${import.meta.env.VITE_APP_BACKEND_URL}/auth/github`
   }
 
   return (

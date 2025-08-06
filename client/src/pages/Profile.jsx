@@ -28,7 +28,7 @@ const ProfilePage = () => {
       const isNewLogin =
         !localStorage.getItem('token') && searchParams.get('token')
 
-      fetch('http://localhost:3000/auth/user', {
+      fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/auth/user`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -58,7 +58,9 @@ const ProfilePage = () => {
     if (user?.username) {
       setIsLoadingPRs(true)
       Promise.all([
-        fetch(`http://localhost:3000/user/${user.username}/pr`)
+        fetch(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/user/${user.username}/pr`
+        )
           .then(response => response.json())
           .then(data => setAllPullRequests(data.prs)),
         dispatch(fetchPR(user.username))
