@@ -20,6 +20,10 @@ app.use('/user', userRoutes)
 
 app.use('/github', githubRoutes)
 
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Server Running' })
+})
+
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at ${process.env.PORT}`)
 })
